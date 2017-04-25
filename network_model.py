@@ -135,7 +135,11 @@ class Network:
             saver = tf.train.Saver()
             if save_model:
                 if self.accuracy > self.previous_accuracy:
+<<<<<<< HEAD
                     file_name = "./model/model-accuracy.ckpt"
+=======
+                    file_name = "./model/model-accuracy-{}.ckpt".format(self.accuracy)
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
                     file_name = saver.save(sess, file_name)
                     print "Model saved in file ", file_name
 

@@ -46,12 +46,16 @@ def train_master_network():
 
     epoch_accuracy = []
     epoch_learning_rate = []
+<<<<<<< HEAD
 
     print "\n***\nTraining Master Network\n***\n"
+=======
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
     for batch in range(len(memory)-batch_size, len(memory)):
          accuracy, learning_rate, future_accuracy = recall(batch)
          epoch_accuracy.append(accuracy)
          epoch_learning_rate.append(learning_rate)
+<<<<<<< HEAD
 	 
 
 	 model.fit(np.array([[accuracy]]), np.array([[learning_rate]]), epochs = num_epochs_master, shuffle = False)
@@ -66,6 +70,11 @@ def sort():
 		if memory[j][2] > memory[j+1][2]:
 			memory[j], memory[j+1] = memory[j+1], memory[j]
     print "\nMemory Sorted\n"	
+=======
+
+    print "\n***\nTraining Master Network\n***\n"
+    model.fit(epoch_accuracy, epoch_learning_rate,epochs = num_epochs_master, batch_size = batch_size, shuffle = False)
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
 
 
 def recall(i):
@@ -77,8 +86,11 @@ def remember(accuracy, learning_rate, future_accuracy):
     print "Memory : Learning rate -- ", learning_rate
     print "Memory : Future accuracy -- ", future_accuracy
     print "Memory Size : ",len(memory), "\n"
+<<<<<<< HEAD
     if len(memory) >= 2 :
 	sort()
+=======
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
 
 
 inital_accuracy = 0.8
@@ -86,13 +98,20 @@ accuracy = inital_accuracy
 
 train_master_with_dummy()
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
 while(True):
 
     prediction_rate = model.predict(np.array([accuracy]))
     prediction_rate = prediction_rate[0][0]
 
+<<<<<<< HEAD
     if (prediction_rate < 0) or (prediction_rate > 10) :
+=======
+    if (prediction_rate < 0) and (prediction_rate > 10) :
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
         continue
 
     network.set_learning_rate(prediction_rate)
@@ -101,7 +120,11 @@ while(True):
     if future_accuracy > accuracy:
         remember(accuracy, prediction_rate, future_accuracy)
 
+<<<<<<< HEAD
     if len(memory) % 3 == 0 and len(memory) != 0:
+=======
+    if len(memory) % 5 == 0 and len(memory) != 0:
+>>>>>>> 7c19a9db0e6849d78a4888c7c020f8dfa317bc22
         train_master_network()
 
 

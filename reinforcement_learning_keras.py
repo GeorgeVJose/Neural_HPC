@@ -9,12 +9,7 @@ import network_model
 network = network_model.Network()
 
 memory = []
-num_epochs_master = 5
-
-x = tf.placeholder(shape = [None, 1], dtype = tf.float32, name = "master_x")
-y = tf.placeholder(shape = [None, 1], dtype = tf.float32, name = "master_y")
-prediction = tf.placeholder(shape = [None, 1], dtype = tf.float32, name= "master_prediction")
-
+num_epochs_master = 10
 
 model = Sequential()
 
@@ -57,7 +52,7 @@ def train_master_network():
          epoch_learning_rate.append(learning_rate)
 
     print "\n***\nTraining Master Network\n***\n"
-    model.fit(epoch_accuracy, epoch_learning_rate, batch_size = batch_size, shuffle = False)
+    model.fit(epoch_accuracy, epoch_learning_rate,epochs = num_epochs_master, batch_size = batch_size, shuffle = False)
 
 
 def recall(i):
